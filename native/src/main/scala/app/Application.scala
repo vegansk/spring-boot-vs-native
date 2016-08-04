@@ -8,6 +8,7 @@ import Service._
 import spray.http.MediaTypes._
 import upickle.default._
 import scala.concurrent.duration._
+import com.typesafe.config._
 
 class HttpServiceActor extends Actor with HttpService {
 
@@ -26,7 +27,9 @@ object Application extends App {
   implicit val system = ActorSystem("on-spray-can")
   implicit val timeout = Timeout(5.seconds)
 
+  val httpConfig = ConfigFactory.load.getConfig("http")
+
   val service = system.actorOf(Props[HttpServiceActor], "my-service")
 
-  IO(Http) ? Http.Bind(service, interface = "localhost", port = 8080)
+  IO(Http) ? Http.Bind(service, interface = httpConfig.getString("interface"), port = httpConfig.getInt("port"))
 }
