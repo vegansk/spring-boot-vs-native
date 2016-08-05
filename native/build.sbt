@@ -13,7 +13,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka"   %%  "akka-actor"    % akkaV,
   "com.lihaoyi"         %%  "upickle"       % "0.4.1",
   "com.typesafe.slick"  %%  "slick"         % "3.1.1",
-  "org.slf4j"           %   "slf4j-nop"     % "1.6.4"
+  "org.slf4j"           %   "slf4j-api"     % "1.6.4",
+  "ch.qos.logback"      %   "logback-core"  % "1.0.1",
+  "ch.qos.logback"      %   "logback-classic"  % "1.0.1",
+  "com.h2database"      %   "h2"            % "1.4.187"
 )
 
 Revolver.settings
