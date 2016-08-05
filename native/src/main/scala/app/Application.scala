@@ -1,3 +1,5 @@
+package app
+
 import akka.actor.{ Actor, ActorSystem, Props }
 import akka.io.IO
 import akka.pattern.ask

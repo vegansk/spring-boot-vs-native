@@ -11,7 +11,9 @@ libraryDependencies ++= Seq(
   "io.spray"            %%  "spray-can"     % sprayV,
   "io.spray"            %%  "spray-routing" % sprayV,
   "com.typesafe.akka"   %%  "akka-actor"    % akkaV,
-  "com.lihaoyi"         %%  "upickle"       % "0.4.1"
+  "com.lihaoyi"         %%  "upickle"       % "0.4.1",
+  "com.typesafe.slick"  %%  "slick"         % "3.1.1",
+  "org.slf4j"           %   "slf4j-nop"     % "1.6.4"
 )
 
 Revolver.settings

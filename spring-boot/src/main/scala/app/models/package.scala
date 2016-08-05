@@ -9,5 +9,4 @@ package object models {
   type _Column = Column @beanGetter
   type _Id = Id @beanGetter
 
-
 }
