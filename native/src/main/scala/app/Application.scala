@@ -80,8 +80,6 @@ object Application extends App {
     productsFirstPage <- db.run(productsPaginated(1, 2))
     _ = println("Products paginated (first page, page size=2):")
     _ = println(productsFirstPage)
-    orderProducts <- db.run(orderProducts.result)
-    _ = orderProducts foreach println
     firstOrderPrice <- db.run(orderTotalPrice(1))
     _ = println("Order ID=1 total price:")
     _ = println(firstOrderPrice.getOrElse(0))

@@ -55,11 +55,18 @@ class Application {
       opr.save(OrderProduct(OrderProductPK(o3.getId, p2.getId), null, null))
       opr.save(OrderProduct(OrderProductPK(o4.getId, p4.getId), null, null))
 
+      println("All products:")
       println(pr.findAll().asScala.toList)
+      println("Products paginated (first page, page size=2):")
       println(pr.findAll(new PageRequest(1,2)).asScala.toList)
-      println(opr.findAll().asScala.toList)
-      opr.findAll().asScala.toList foreach println
+      println("Order ID=1 total price:")
       println(or.orderTotalPrice(1))
+      println("Customer ID=1 orders:")
+      println(or.findByCustomerId(1).asScala.toList)
+      println("Customers who ordered product ID=3:")
+      println(cr.customersWhoOrderedTheProduct(3).asScala.toList)
+      println("Total price of all customer ID=1 orders:")
+      println(cr.customerOrdersTotal(1))
     }
   }
 }
