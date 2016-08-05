@@ -18,22 +18,13 @@ class Application {
 
   @Bean
   def demo(em: EntityManager,
-           cr: CustomerRepository
+           cr: CustomersRepository,
+           or: OrdersRepository,
+           pr: ProductsRepository
   ) = new CommandLineRunner {
     def run(args: String*) {
-      var count = em.createNativeQuery("select count(*) from customers")
-        .getSingleResult()
-        .asInstanceOf[BigInteger]
-
-      log.info(s"Records before initialization: ${count}")
-
-      cr.save(Customer(null, "Mike Wazovsky"))
-
-      count = em.createNativeQuery("select count(*) from customers")
-        .getSingleResult()
-        .asInstanceOf[BigInteger]
-
-      log.info(s"Records after initialization: ${count}")
+      val customers = 1 to 3 map(id => cr.save(Customer(null, s"Customer${id}")))
+      // val products = 1 to 10 map(id => pr.save(Product(null, s"Product${id}", if(id == 10) null else new java.math.BigDecimal(id))))
     }
   }
 

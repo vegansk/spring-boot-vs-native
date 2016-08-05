@@ -5,15 +5,16 @@ import scala.beans.BeanProperty
 
 @Entity
 @Table(name="customers")
-case class Customer(
+case class Order(
   @_Id
   @_GeneratedValue(strategy=GenerationType.AUTO)
   @BeanProperty
   var id: java.lang.Long,
 
   @BeanProperty
-  @_Column(nullable = false)
-  var name: String
+  @_ManyToOne(optional = false)
+  @_JoinColumn(name = "customer_id")
+  var customer: Customer
 ) {
   def this() = this(null, null)
 }

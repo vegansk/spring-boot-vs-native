@@ -4,8 +4,8 @@ import javax.persistence._
 import scala.beans.BeanProperty
 
 @Entity
-@Table(name="customers")
-case class Customer(
+@Table(name="products")
+case class Product(
   @_Id
   @_GeneratedValue(strategy=GenerationType.AUTO)
   @BeanProperty
@@ -13,7 +13,10 @@ case class Customer(
 
   @BeanProperty
   @_Column(nullable = false)
-  var name: String
+  var name: String,
+
+  @BeanProperty
+  var price: java.math.BigDecimal
 ) {
-  def this() = this(null, null)
+  def this() = this(null, null, null)
 }
