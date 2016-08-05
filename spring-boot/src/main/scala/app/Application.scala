@@ -21,19 +21,18 @@ class Application {
            cr: CustomerRepository
   ) = new CommandLineRunner {
     def run(args: String*) {
-      var count = em.createNativeQuery("select count(*) from customers")
+      val count = em.createNativeQuery("select count(*) from customers")
         .getSingleResult()
         .asInstanceOf[BigInteger]
 
       log.info(s"Records before initialization: ${count}")
 
-      cr.save(Customer(null, "Mike Wazovsky"))
+      var c = cr.save(Customer(null, "Mike Wazovsky"))
+      log.info(s"Inserted id = ${c.getId}")
 
-      count = em.createNativeQuery("select count(*) from customers")
-        .getSingleResult()
-        .asInstanceOf[BigInteger]
-
-      log.info(s"Records after initialization: ${count}")
+      c = cr.findOne(c.getId)
+      if(c != null)
+        log.info(s"Found ${c.getName}")
     }
   }
 
