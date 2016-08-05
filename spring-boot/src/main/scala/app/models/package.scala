@@ -10,6 +10,9 @@ package object models {
   type _Id = Id @beanGetter
   type _OneToOne = OneToOne @beanGetter
   type _ManyToOne = ManyToOne @beanGetter
+  type _ManyToMany = ManyToMany @beanGetter
   type _JoinColumn = JoinColumn @beanGetter
+  type _JoinColumns = JoinColumns @beanGetter
+  type _EmbeddedId = EmbeddedId @beanGetter
 
 }
