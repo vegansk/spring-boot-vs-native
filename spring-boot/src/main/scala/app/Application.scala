@@ -24,7 +24,7 @@ class Application {
   ) = new CommandLineRunner {
     def run(args: String*) {
       val customers = 1 to 3 map(id => cr.save(Customer(null, s"Customer${id}")))
-      // val products = 1 to 10 map(id => pr.save(Product(null, s"Product${id}", if(id == 10) null else new java.math.BigDecimal(id))))
+      val products = 1 to 10 map(id => pr.save(Product(null, s"Product${id}", if(id == 10) null else new java.math.BigDecimal(id))))
     }
   }
 

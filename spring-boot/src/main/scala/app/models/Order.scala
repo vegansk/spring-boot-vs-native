@@ -4,7 +4,7 @@ import javax.persistence._
 import scala.beans.BeanProperty
 
 @Entity
-@Table(name="customers")
+@Table(name="orders")
 case class Order(
   @_Id
   @_GeneratedValue(strategy=GenerationType.AUTO)
@@ -14,7 +14,11 @@ case class Order(
   @BeanProperty
   @_ManyToOne(optional = false)
   @_JoinColumn(name = "customer_id")
-  var customer: Customer
+  var customer: Customer,
+
+  @BeanProperty
+  @Column(nullable=false)
+  var createdAt: java.sql.Timestamp
 ) {
-  def this() = this(null, null)
+  def this() = this(null, null, null)
 }
